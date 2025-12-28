@@ -76,10 +76,31 @@ If you’d like to improve this project, please follow the steps below:
 2. **Create a new branch**
    ```bash
    git checkout -b feature/your-feature
+3. **Commit your changes**
+```bash
+git commit -m "Add awesome feature"
 ```
+4. **Push to your branch**
+```bash
+git push origin feature/awesome-feature
+```
+5. **Open a Pull Request**
 
 ---
 
+📄 License
+This project is open-source and available for learning and personal use.
+---
+
+***👤 Author***
+
+Amit Yadav
+Frontend / Full Stack Developer
+
+🔗 GitHub: https://github.com/Amit1045
+---
+
+⭐ If you like this project, don’t forget to give it a star!
 If you want, I can also:
 - Add **Code of Conduct**
 - Add **Issue templates**
