@@ -1,16 +1,90 @@
-# React + Vite
+# WearUp 🛍️  
+A Modern Fashion Shopping Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WearUp is a responsive and user-friendly shopping website built using **React** and **Vite**.  
+It focuses on clean UI, smooth user experience, and scalable frontend architecture, making it suitable for real-world e-commerce applications and portfolio showcase.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## React Compiler
+🔗 https://vercel.com/amit1045s-projects/wear-up
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📌 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 👕 Fashion product listing
+- 🎨 Clean & modern UI design
+- 📱 Fully responsive (mobile, tablet & desktop)
+- ⚡ Fast performance with Vite
+- ♻️ Reusable React components
+- 🧩 Easy to extend and maintain
+- 🚀 Ready for deployment on Vercel / Netlify
+
+---
+
+## 🧑‍💻 Tech Stack
+
+| Technology | Usage |
+|----------|------|
+| React | Frontend UI |
+| Vite | Build tool & dev server |
+| JavaScript (ES6+) | Application logic |
+| CSS / Tailwind (if used) | Styling |
+| Vercel | Deployment |
+
+---
+
+## 📂 Project Structure
+
+WearUp/
+├── public/             # Public assets
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── pages/          # Page views
+│   ├── styles/         # Global & component styles
+│   ├── App.jsx         # Root component
+│   └── main.jsx        # Entry point
+├── .gitignore
+├── package.json
+├── vite.config.js
+└── README.md
+
+---
+
+## ⚙️ Installation & Setup
+
+Follow these steps to run the project locally:
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Amit1045/WearUp.git
+cd WearUp
+## Install Dependencies:
+npm install
+## Start Development Server: 
+npm run dev
+```
+
+## 🤝 Contributing
+
+Contributions are always welcome!  
+If you’d like to improve this project, please follow the steps below:
+
+1. **Fork the repository**
+
+2. **Create a new branch**
+   ```bash
+   git checkout -b feature/your-feature
+```
+
+---
+
+If you want, I can also:
+- Add **Code of Conduct**
+- Add **Issue templates**
+- Make it **open-source–ready** like big GitHub projects
+
+Just say the word 👌
+
