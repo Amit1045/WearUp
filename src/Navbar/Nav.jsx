@@ -1,17 +1,19 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function Nav() {
   return (
    
     <div className="max-w-8xl mx-auto flex items-center justify-between py-4 px-6 shadow-md sticky">
-      <a href="/">
+     <Link to={'/'}>
       <h1 className="text-2xl font-bold">
         <span className="text-pink-600">Wear</span>
         <span className="text-gray-900">Up</span>
       </h1>
-      </a>
+      </Link>
       <ul className="hidden md:flex items-center gap-12 text-gray-700 tracking-widest text-sm font-medium">
+       <Link to={'/women'}>
         <li className="hover:text-black cursor-pointer">WOMEN</li>
+        </Link>
         <li className="hover:text-black cursor-pointer">MEN</li>
   
         <li className="flex items-center gap-2 hover:text-black cursor-pointer">

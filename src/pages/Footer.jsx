@@ -38,7 +38,7 @@ export default function Footer() {
             <li>Site Map</li>
             <li>Corporate Information</li>
             <li>Whitehat</li>
-            <li>TrendBay Global</li>
+            <li>WearUp Global</li>
           </ul>
         </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
         {/* Column 3 */}
         <div>
           <h3 className="font-bold text-gray-900 mb-3 text-sm">
-            EXPERIENCE TRENDBAY ON MOBILE
+            EXPERIENCE WearUp ON MOBILE
           </h3>
           <div className="flex gap-3 mb-8">
             <img
@@ -96,7 +96,7 @@ export default function Footer() {
                 100% ORIGINAL guarantee
               </h4>
               <p className="text-sm">
-                for all products sold on <span className="font-medium">TrendBay</span>
+                for all products sold on <span className="font-medium">WearUp</span>
               </p>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function Footer() {
       {/* ===== COPYRIGHT & ADDRESS ===== */}
       <div className="border-t border-gray-200 max-w-[1300px] mx-auto px-6 py-10">
         <p className="text-sm mb-4 text-gray-700">
-          © {new Date().getFullYear()} TrendBay. All rights reserved.
+          © {new Date().getFullYear()} WearUp. All rights reserved.
         </p>
 
         <h3 className="font-bold text-gray-900 text-sm mb-2">
@@ -166,13 +166,13 @@ export default function Footer() {
       <div className="border-t border-gray-200 max-w-[1300px] mx-auto px-6 py-12 space-y-8 text-sm text-gray-700 leading-7">
         <div>
           <h3 className="font-bold text-gray-900 text-sm mb-2">
-            ONLINE SHOPPING MADE EASY AT TRENDBAY
+            ONLINE SHOPPING MADE EASY AT WearUp
           </h3>
           <p>
-            TrendBay offers a seamless shopping experience for Men, Women, and
+            WearUp offers a seamless shopping experience for Men, Women, and
             Kids. Browse thousands of curated fashion items across categories
             such as western wear, ethnic wear, accessories, and more. Enjoy the
-            comfort of shopping from home with TrendBay’s fast delivery and
+            comfort of shopping from home with WearUp’s fast delivery and
             14-day easy returns.
           </p>
         </div>
@@ -182,7 +182,7 @@ export default function Footer() {
             BEST ONLINE SHOPPING DESTINATION FOR FASHION LOVERS
           </h3>
           <p>
-            Discover TrendBay’s latest drops every week! Explore categories like
+            Discover WearUp’s latest drops every week! Explore categories like
             smart men’s clothing, trendy women’s apparel, and cool streetwear
             collections for GenZ. Get exclusive deals, combo offers, and limited
             edition collections at affordable prices.
@@ -191,10 +191,10 @@ export default function Footer() {
 
         <div>
           <h3 className="font-bold text-gray-900 text-sm mb-2">
-            TRENDBAY INSIDER BENEFITS
+            WearUp INSIDER BENEFITS
           </h3>
           <p>
-            Become a TrendBay Insider to access early sales, free delivery, and
+            Become a WearUp Insider to access early sales, free delivery, and
             special rewards on your orders. Earn points with every purchase and
             redeem them for exclusive discounts and member-only launches.
           </p>
@@ -205,7 +205,7 @@ export default function Footer() {
             AFFORDABLE FASHION AT YOUR FINGERTIPS
           </h3>
           <p>
-            Whether it’s casual wear, office looks, or festive outfits—TrendBay
+            Whether it’s casual wear, office looks, or festive outfits—WearUp
             makes it easy to stay stylish without breaking the bank. Download
             our app for a smoother, personalized shopping experience today.
           </p>
