@@ -37,20 +37,19 @@ It focuses on clean UI, smooth user experience, and scalable frontend architectu
 ---
 
 ## 📂 Project Structure
-
 WearUp/
-├── public/             # Public assets
+├── public/ # Public assets
 ├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # Page views
-│   ├── styles/         # Global & component styles
-│   ├── App.jsx         # Root component
-│   └── main.jsx        # Entry point
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Page views
+│ ├── styles/ # Global & component styles
+│ ├── App.jsx # Root component
+│ └── main.jsx # Entry point
+│
 ├── .gitignore
 ├── package.json
 ├── vite.config.js
 └── README.md
-
 ---
 
 ## ⚙️ Installation & Setup
