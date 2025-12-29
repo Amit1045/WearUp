@@ -6,17 +6,20 @@ import { Routes, Route } from 'react-router-dom'
 import Women from './pages/Women'
 import Man from './pages/Man'
 import Trending from './pages/Trending'
+import Products from './pages/Products'
+
 function App() {
 
   return (
-   <div>
-    <Nav/>
-    <Routes>
+    <div>
+      <Nav />
+      <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/women' element={<Women />} />
         <Route path='/men' element={<Man />} />
         <Route path='/trending' element={<Trending />} />
-       </Routes>    
+        <Route path="/selectProduct" element={<Products />} />
+      </Routes>
     </div>
   )
 }

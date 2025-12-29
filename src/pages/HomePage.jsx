@@ -23,7 +23,14 @@ const ImageCarousel = ({ images }) => {
   };
 
   return (
-    <div className="relative w-[600px] h-[400px] rounded-2xl overflow-hidden shadow-xl bg-white">
+    <div className=" relative
+    w-full
+    max-w-[600px]
+    h-[260px]
+    sm:h-80
+    lg:h-[420px]
+    rounded-2xl
+    overflow-hidden">
 
       <img
         src={images[index]}
@@ -82,40 +89,38 @@ function HomePage() {
 
   return (
     <div >
-      <section className="w-full h-[600px] flex justify-center items-center p-[50px] left-[12%] bg-pink-100">
-        {/* LEFT SECTION */}
-        <div className="max-w-lg space-y-6">
-          <h1 className="text-6xl font-extrabold">
-            Redefine your <span className="text-pink-500">style</span><br /> this season.
-          </h1>
+      <section className="w-full bg-pink-50">
+        <div className="max-w-7xl mx-auto px-5 py-12 flex flex-col lg:flex-row items-center gap-12">
 
-          <p className="text-gray-600 text-sm">
-            Explore trend-forward collections crafted for your everyday confidence.
-            From streetwear to sophistication, find pieces that move with you.
-          </p>
+          {/* LEFT */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left space-y-5">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight">
+              Redefine your <span className="text-pink-500">style</span> this season.
+            </h1>
 
-          <div className="flex gap-4">
-            <button className="border border-blue-500 bg-blue-600 px-5 py-2 text-white font-bold cursor-pointer rounded-lg text-[16px] transition-transform duration-300 hover:scale-110">
-              Shop Men
-            </button>
+            <p className="text-gray-600 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">
+              Explore trend-forward collections crafted for your everyday confidence.
+              From streetwear to sophistication, find pieces that move with you.
+            </p>
 
-            <button className="relative overflow-hidden px-6 py-2 border border-pink-500 
-             text-pink-500 font-medium rounded-lg group cursor-pointer">
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+            <div className="flex gap-3 justify-center lg:justify-start">
+              <button className="px-5 py-2 rounded-full bg-pink-500 text-white font-semibold text-sm">
                 Shop Women
-              </span>
-
-              <span className="absolute inset-0 bg-pink-600 scale-x-0 origin-left 
-               transition-transform duration-500 group-hover:scale-x-100">
-              </span>
-            </button>
-
+              </button>
+              <button className="px-5 py-2 rounded-full border border-blue-500 text-blue-600 font-semibold text-sm">
+                Shop Men
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* RIGHT SECTION */}
-        <ImageCarousel images={imgs} />
+          {/* RIGHT */}
+          <div className="w-full lg:w-1/2">
+            <ImageCarousel images={imgs} />
+          </div>
+
+        </div>
       </section>
+
 
       {/* Below Hero Section */}
       <section>
@@ -138,7 +143,7 @@ function HomePage() {
         <HighlightedProduct />
       </section>
       <section className='bg-gray-100'>
-      <HoverImageMenu />
+        <HoverImageMenu />
       </section>
       <section>
         <ShopByFandom />
@@ -182,28 +187,60 @@ const slides = [
 
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(1);
 
-  const goNext = () => setIndex((prev) => (prev + 1) % slides.length);
-  const goPrev = () =>
-    setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  // Detect screen size properly
+  useEffect(() => {
+    const updateSlides = () => {
+      setSlidesPerView(window.innerWidth >= 1024 ? 3 : 1);
+    };
+
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
+  const maxIndex = slides.length - slidesPerView;
+
+  // 🔥 AUTO SLIDE
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 2000); // 1 second
+
+    return () => clearInterval(interval);
+  }, [maxIndex]);
+
+  const goNext = () => {
+    setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  const goPrev = () => {
+    setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
 
   return (
     <div className="w-full overflow-hidden relative py-10 bg-white">
       <div
-        className="flex transition-transform duration-700"
-        style={{ transform: `translateX(-${index * (100 / slides.length)}%)` }}
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{
+          transform: `translateX(-${index * (100 / slidesPerView)}%)`,
+        }}
       >
         {slides.map((item, i) => (
-          <div key={i} className="w-1/3 px-4 shrink-0">
-            <div className="relative rounded-3xl overflow-hidden shadow-lg h-[460px]">
-              <img src={item.img} className="w-full h-full object-cover" alt="" />
+          <div key={i} className="w-full lg:w-1/3 shrink-0 px-4">
+            <div className="relative h-[280px] sm:h-[360px] lg:h-[460px] rounded-3xl overflow-hidden shadow-lg">
+              <img
+                src={item.img}
+                alt=""
+                className="w-full h-full object-cover"
+              />
 
-              {/* OVERLAY CONTENT */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-linear-to-t from-black/60 to-transparent">
-                <p className="text-white tracking-wide text-sm mb-1">
+              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
+                <p className="text-white text-xs sm:text-sm">
                   {item.subtitle}
                 </p>
-                <h2 className="text-white font-extrabold text-4xl leading-tight">
+                <h2 className="text-white font-extrabold text-xl sm:text-2xl lg:text-4xl">
                   {item.title}
                 </h2>
               </div>
@@ -212,29 +249,29 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* LEFT BUTTON */}
+      {/* Arrows */}
       <button
         onClick={goPrev}
-        className="absolute top-1/2 left-4 -translate-y-1/2 bg-white p-3 rounded-full shadow hover:scale-110 transition"
-      > ←
+        className="hidden lg:flex absolute top-1/2 left-4 -translate-y-1/2 bg-white p-3 rounded-full shadow"
+      >
+        ←
       </button>
 
-      {/* RIGHT BUTTON */}
       <button
         onClick={goNext}
-        className="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-3 rounded-full shadow hover:scale-110 transition"
+        className="hidden lg:flex absolute top-1/2 right-4 -translate-y-1/2 bg-white p-3 rounded-full shadow"
       >
         →
       </button>
 
-      {/* DOTS */}
-      <div className="flex justify-center mt-4 gap-2">
-        {slides.map((_, i) => (
-          <div
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-4">
+        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+          <span
             key={i}
-            className={`w-3 h-3 rounded-full ${i === index ? "bg-gray-800" : "bg-gray-300"
+            className={`w-2.5 h-2.5 rounded-full ${i === index ? "bg-gray-800" : "bg-gray-300"
               }`}
-          ></div>
+          />
         ))}
       </div>
     </div>
@@ -244,193 +281,264 @@ export function HeroCarousel() {
 export function NewArrivalSection() {
   const clothesDesign = [
     {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
+      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
+      ClothType: "Black Oversized Coat",
+      price: "1599",
+      color: ["#000000", "#8b4513", "#cccccc"]
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800",
+      ClothType: "Cream Bermuda Trase",
+      price: "899",
+      color: ["#f5deb3", "#d2b48c", "#a0522d"]
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1593032465171-8c84c42f79a8?w=800",
+      ClothType: "Red Sports Jacket",
       price: "1299",
-      color: ["blue", "green", "yellow"]
+      color: ["#c0392b", "#000000"]
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
+      imgsrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+      ClothType: "Pastel Windbreaker",
+      price: "1499",
+      color: ["#e0b0ff", "#87ceeb", "#ffffff"]
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1520975922284-9c1f5d21c4f8?w=800",
+      ClothType: "Classic Blue Denim Jacket",
+      price: "1799",
+      color: ["#1f3c88", "#2f4f4f"]
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800",
+      ClothType: "White Casual Hoodie",
+      price: "1199",
+      color: ["#ffffff", "#dcdcdc"]
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+      ClothType: "Olive Green Cargo Pants",
+      price: "1399",
+      color: ["#556b2f", "#6b8e23"]
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
+      ClothType: "Beige Summer Shirt",
       price: "999",
-      color: ["black", "white"]
+      color: ["#f5f5dc", "#deb887"]
     },
     {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
+      imgsrc: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800",
+      ClothType: "Black Streetwear Sneakers",
       price: "2499",
-      color: ["grey", "navy", "maroon"]
+      color: ["#000000", "#555555"]
     },
     {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-      price: "2100",
-      color: ["lightblue", "darkblue"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
+      imgsrc: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800",
+      ClothType: "Pink Oversized Sweatshirt",
       price: "1299",
-      color: ["blue", "green", "yellow"]
+      color: ["#ffc0cb", "#ffb6c1"]
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
-      price: "999",
-      color: ["black", "white"]
+      imgsrc: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=800",
+      ClothType: "Grey Slim Fit Trousers",
+      price: "1499",
+      color: ["#808080", "#a9a9a9"]
     },
     {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
-      price: "2499",
-      color: ["grey", "navy", "maroon"]
-    },
-    {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-      price: "2100",
-      color: ["lightblue", "darkblue"]
+      imgsrc: "https://images.unsplash.com/photo-1542060748-10c28b62716c?w=800",
+      ClothType: "Navy Blue Bomber Jacket",
+      price: "1899",
+      color: ["#0b3c5d", "#1c4966"]
     }
   ];
 
+
   return (
-    <div className="w-full px-6 py-6">
-      <h2 className="text-3xl font-bold text-center mb-6">New  <span className=' text-pink-600'>Arrival</span></h2>
+    <section className="w-full px-4 py-8">
+      <h2 className="text-xl font-bold text-center mb-6">
+        New <span className="text-pink-600">Arrivals</span>
+      </h2>
 
-      {/* Responsive grid */}
-      <div className="grid 
-                      grid-cols-1 
-                      sm:grid-cols-2 
-                      md:grid-cols-3 
-                      lg:grid-cols-4 
-                      gap-6">
-
+      {/* GRID */}
+      <div
+        className="
+          grid
+          grid-cols-2
+          gap-4
+          sm:grid-cols-3
+          lg:grid-cols-4
+        "
+      >
         {clothesDesign.map((item, i) => (
-          <div key={i} className="shadow-lg rounded-2xl bg-yellow-50 overflow-hidden cursor-pointer">
+          <div
+            key={i}
+            className="bg-white rounded-2xl shadow-md overflow-hidden"
+          >
+            {/* IMAGE */}
+            <div className="relative">
+              <img
+                src={item.imgsrc}
+                alt={item.ClothType}
+                className="w-full h-[220px] object-cover"
+              />
 
-            <img
-              className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
-              src={item.imgsrc}
-              alt={item.ClothType}
-            /><span className='relative p-1 bg-green-600 rounded bottom-[60%] left-[5%] text-white text-[12px]'>NEW</span>
+              {/* NEW BADGE */}
+              <span className="absolute top-2 left-2 bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-semibold">
+                NEW
+              </span>
+            </div>
 
-            <div className="text-center p-4">
-              <h2 className="font-bold text-xl">{item.ClothType}</h2>
-              <p className="text-lg">Rs{item.price}</p>
+            {/* DETAILS */}
+            <div className="p-3 text-center">
+              <h3 className="text-sm font-semibold leading-snug line-clamp-2">
+                {item.ClothType}
+              </h3>
 
-              {/* Color circles */}
+              <p className="text-sm font-bold mt-1">
+                ₹{item.price}
+              </p>
+
+              {/* COLOR DOTS */}
               <div className="flex justify-center gap-2 mt-2">
-                {item.color.map((c, index) => (
-                  <div
-                    key={index}
-                    className="w-5 h-5 rounded-full border"
+                {item.color.map((c, idx) => (
+                  <span
+                    key={idx}
+                    className="w-3 h-3 rounded-full border"
                     style={{ backgroundColor: c }}
-                  ></div>
+                  />
                 ))}
               </div>
             </div>
-
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
 export function FeaturedCollection() {
   const featuredItems = [
     {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
+      imgsrc: "https://images.unsplash.com/photo-1520975922284-9c1f5d21c4f8?w=800",
+      title: "DROPPING SOON",
+      tall: true
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
-
+      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
+      title: "SHIRTS"
     },
     {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
-
+      imgsrc: "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?w=800",
+      title: "SHOES"
     },
     {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-
+      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800",
+      title: "JEANS",
+      tall: true
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
-
+      imgsrc: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800",
+      title: "PERFUME"
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
-
+      imgsrc: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
+      title: "T-SHIRTS"
     },
     {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
-
+      imgsrc: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+      title: "ACCESSORIES"
     },
     {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-
+      imgsrc: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800",
+      title: "HOODIES"
     },
     {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-
+      imgsrc: "https://images.unsplash.com/photo-1528701800489-20be8b7f0f19?w=800",
+      title: "SNEAKERS"
     },
     {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-
+      imgsrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
+      title: "WINTER WEAR",
+      tall: true
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1740711152088-88a009e877bb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNoaXJ0fGVufDB8fDB8fHww",
-      ClothType: "Denim Jeans",
-
+      imgsrc: "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800",
+      title: "BAGS"
     },
     {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-
+      imgsrc: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+      title: "SUNGLASSES"
     }
   ];
 
   return (
-    <div className='w-full px-8 py-8 '>
-      <h1 className='text-2xl text-center font-bold mb-2'>Featured Collection</h1>
-      <div className='grid w-[90%] ml-[100px] 
-                      grid-cols-1 
-                      sm:grid-cols-2 
-                      md:grid-cols-3 
-                      lg:grid-cols-6 
-                      gap-2 ' >
-        {featuredItems.map((Fitem) => (
-          <div className="border-amber-50 relative overflow-hidden">
+    <section className="w-full px-4 py-10">
+      <h2 className="text-center text-sm font-bold tracking-widest mb-6">
+        FEATURED CATEGORIES
+      </h2>
+
+      {/* MASONRY GRID */}
+      <div
+        className="
+          grid
+          grid-cols-2
+          gap-4
+          md:grid-cols-3
+          lg:grid-cols-4
+        "
+      >
+        {featuredItems.map((item, i) => (
+          <div
+            key={i}
+            className={`relative rounded-xl overflow-hidden group
+              ${item.tall ? "row-span-2 h-[420px]" : "h-[200px]"}
+            `}
+          >
             <img
-              className="block w-full h-64 object-cover hover:scale-105 transition-transform duration-500" alt={Fitem.ClothType}
-              src={Fitem.imgsrc}
+              src={item.imgsrc}
+              alt={item.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
-            <span className="absolute  bottom-[4%] left-[20%] font-extrabold text-gray-700 bg-white text-center p-2 rounded cursor-pointer">
-              {Fitem.ClothType}
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition" />
+
+            {/* Text */}
+            <span
+              className="
+                absolute
+                bottom-3
+                left-1/2
+                -translate-x-1/2
+                bg-white
+                text-black
+                text-xs
+                font-bold
+                px-3
+                py-1
+                rounded-full
+                shadow
+              "
+            >
+              {item.title}
             </span>
           </div>
-        ))}</div>
-    </div>
-  )
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export function HighlightedProduct() {
-  const [moveImg1, setMoveImg1] = useState(0)
+  const [moveImg1, setMoveImg1] = useState(0);
+
   const images = [
     "https://baccabucci.com/cdn/shop/files/PPG_banner_1.png?v=1760417417",
     "https://baccabucci.com/cdn/shop/files/web_banner_1.jpg?v=1758347846",
   ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setMoveImg1((prev) => (prev + 1) % images.length);
@@ -440,46 +548,64 @@ export function HighlightedProduct() {
   }, [images.length]);
 
   return (
-
-    <div className="relative w-full h-[70vh] md:h-[60vh] overflow-hidden rounded-2xl shadow-lg">
-      {/* Images */}
-      {images.map((img, i) => (
-        <img
-          key={i}
-          src={img}
-          alt="carousel"
-          className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000
-            ${i === moveImg1 ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
-        />
-      ))}
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-black/40 via-black/20 to-transparent" />
-
-      {/* Caption */}
-      <div className="absolute bottom-10 left-10 text-white">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-wide">
-          Premium Footwear
-        </h2>
-        <p className="mt-2 text-lg opacity-90">
-          Style that moves with you
-        </p>
-      </div>
-
-      {/* Dots */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => (
-          <button
+    <section className="w-full px-4 sm:px-6 lg:px-10 py-10">
+      <div
+        className="
+          relative
+          w-full
+          h-[45vh]
+          sm:h-[55vh]
+          lg:h-[65vh]
+          overflow-hidden
+          rounded-2xl
+          shadow-lg
+        "
+      >
+        {/* Images */}
+        {images.map((img, i) => (
+          <img
             key={i}
-            onClick={() => setMoveImg1(i)}
-            className={`w-3 h-3 rounded-full transition-all
-              ${i === moveImg1 ? "bg-white scale-125" : "bg-white/50"}`}
+            src={img}
+            alt="carousel"
+            className={`
+              absolute inset-0 w-full h-full object-cover
+              transition-all duration-1000 ease-in-out
+              ${i === moveImg1 ? "opacity-100 scale-100" : "opacity-0 scale-105"}
+            `}
           />
         ))}
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
+
+        {/* Caption */}
+        <div className="absolute bottom-6 sm:bottom-10 left-5 sm:left-10 max-w-xs sm:max-w-md text-white">
+          <h2 className="text-xl sm:text-3xl lg:text-5xl font-bold tracking-wide">
+            Premium Footwear
+          </h2>
+          <p className="mt-2 text-sm sm:text-base opacity-90">
+            Style that moves with you
+          </p>
+        </div>
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setMoveImg1(i)}
+              className={`
+                w-2.5 h-2.5 rounded-full transition-all
+                ${i === moveImg1 ? "bg-white scale-125" : "bg-white/50"}
+              `}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
+
 const hoverImages = [
   {
     title: "Casual Wears",
@@ -523,14 +649,26 @@ const hoverImages = [
   },
 ];
 
-export  function HoverImageMenu() {
+export function HoverImageMenu() {
   const [activeItem, setActiveItem] = useState(hoverImages[0]);
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-between px-20">
-      
+    <div className="
+  w-full min-h-screen
+  flex flex-col lg:flex-row
+  items-center justify-center lg:justify-between
+  gap-10
+  px-6 md:px-12 lg:px-20
+">
+
+
       {/* LEFT IMAGE */}
-      <div className="w-[400px] h-[500px] overflow-hidden rounded-2xl">
+      <div className="
+        w-[280px] h-[360px]
+        sm:w-[320px] sm:h-[420px]
+        lg:w-[400px] lg:h-[500px]
+        overflow-hidden rounded-2xl
+      ">
         <img
           src={activeItem.leftImg}
           alt=""
@@ -539,17 +677,20 @@ export  function HoverImageMenu() {
       </div>
 
       {/* CENTER MENU */}
-      <div className="flex flex-col gap-6 text-center">
+      <div className="flex flex-col gap-4 sm:gap-6 text-center">
         {hoverImages.map((item, index) => (
           <h2
             key={index}
             onMouseEnter={() => setActiveItem(item)}
-            className={`text-3xl tracking-wide cursor-pointer transition-all duration-300
-              ${
-                activeItem.title === item.title
-                  ? "text-yellow-400 font-bold scale-105"
-                  : "text-black"
-              }`}
+            className={`
+              text-xl sm:text-2xl lg:text-3xl
+              tracking-wide cursor-pointer
+              transition-all duration-300
+              ${activeItem.title === item.title
+                ? "text-yellow-400 font-bold scale-105"
+                : "text-black"
+              }
+            `}
           >
             {item.title}
           </h2>
@@ -557,7 +698,12 @@ export  function HoverImageMenu() {
       </div>
 
       {/* RIGHT IMAGE */}
-      <div className="w-[400px] h-[500px] overflow-hidden rounded-2xl">
+      <div className="
+        w-[280px] h-[360px]
+        sm:w-[320px] sm:h-[420px]
+        lg:w-[400px] lg:h-[500px]
+        overflow-hidden rounded-2xl
+      ">
         <img
           src={activeItem.rightImg}
           alt=""
@@ -603,8 +749,6 @@ const fandoms = [
 
 ];
 
-
-  
 const ShopByFandom = () => {
   const sliderRef = useRef(null);
 
@@ -617,16 +761,17 @@ const ShopByFandom = () => {
   };
 
   return (
-    <div className="w-full px-10 py-10">
-      <h1 className="text-3xl font-bold text-center mb-8">
+    <div className="w-full px-4 sm:px-6 lg:px-10 py-10">
+      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-8">
         Shop by Fandom
       </h1>
 
       <div className="relative">
-        {/* Left Button */}
+        {/* Left Button – desktop only */}
         <button
           onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center"
+          className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 
+          z-10 bg-black/70 text-white w-10 h-10 rounded-full items-center justify-center"
         >
           ‹
         </button>
@@ -634,14 +779,26 @@ const ShopByFandom = () => {
         {/* Slider */}
         <div
           ref={sliderRef}
-          className="flex gap-6 overflow-x-hidden scroll-smooth no-scrollbar"
+          className="
+            flex gap-4 sm:gap-6
+            overflow-x-auto md:overflow-x-hidden
+            scroll-smooth no-scrollbar
+            snap-x snap-mandatory
+          "
         >
           {fandoms.map((item) => (
             <div
               key={item.id}
-              className="min-w-[280px] bg-white rounded-3xl shadow-md p-4"
+              className="
+                snap-start
+                min-w-[260px] sm:min-w-[300px] lg:min-w-[350px]
+                bg-white rounded-3xl shadow-md p-4
+              "
             >
-              <div className="w-full h-[350px] overflow-hidden rounded-2xl">
+              <div className="
+                w-full h-[320px] sm:h-[380px] lg:h-[450px]
+                overflow-hidden rounded-2xl
+              ">
                 <img
                   src={item.img}
                   alt={item.title}
@@ -649,21 +806,22 @@ const ShopByFandom = () => {
                 />
               </div>
 
-              <h2 className="text-center text-2xl font-extrabold mt-6">
+              <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-extrabold mt-4 sm:mt-6">
                 {item.title}
               </h2>
             </div>
           ))}
         </div>
 
-        {/* Right Button */}
+        {/* Right Button – desktop only */}
         <button
           onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center"
+          className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 
+          z-10 bg-black/70 text-white w-10 h-10 rounded-full items-center justify-center"
         >
           ›
         </button>
       </div>
     </div>
   );
-}
+};
