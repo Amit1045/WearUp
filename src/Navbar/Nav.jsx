@@ -14,14 +14,17 @@ function Nav() {
        <Link to={'/women'}>
         <li className="hover:text-black cursor-pointer">WOMEN</li>
         </Link>
+        <Link to={'/men'}>
         <li className="hover:text-black cursor-pointer">MEN</li>
-  
+        </Link>
+        <Link to={'/trending'}>
         <li className="flex items-center gap-2 hover:text-black cursor-pointer">
           TRENDING
           <span className="bg-yellow-400 text-black text-[10px] font-bold px-2 py-0.5 rounded-md -mt-1">
             HOT
           </span>
         </li>
+        </Link>
       </ul>
   
       <div className="flex items-center gap-6">
@@ -34,7 +37,7 @@ function Nav() {
           </svg>
           <input
             type="text"
-            placeholder="Search TrendBay"
+            placeholder="Search WearUp"
             className="w-full outline-none text-gray-700"
           />
         </div>

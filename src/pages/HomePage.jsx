@@ -54,7 +54,7 @@ const ImageCarousel = ({ images }) => {
       text-white rounded-lg shadow-md">
         Explore →
       </button>
-      <div className="absolute bottom-10 left-6">
+      <div className="absolute bottom-16 left-6">
         <span className="font-bold text-white text-[30px] drop-shadow-lg">
           {index === 0 ? "Aesthetic Wears" : "Casual Wears"}
         </span>
