@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import Footer from './Footer';
-
+import { Link } from "react-router-dom"
 const ImageCarousel = ({ images }) => {
   const [index, setIndex] = useState(0);
 
@@ -57,10 +57,12 @@ const ImageCarousel = ({ images }) => {
       </button>
 
       {/* Explore Button */}
-      <button className="absolute bottom-6 left-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 
+      <Link to={'/selectProduct'}>
+        <button className="absolute bottom-6 left-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 
       text-white rounded-lg shadow-md">
-        Explore →
-      </button>
+          Explore →
+        </button>
+      </Link>
       <div className="absolute bottom-16 left-6">
         <span className="font-bold text-white text-[30px] drop-shadow-lg">
           {index === 0 ? "Aesthetic Wears" : "Casual Wears"}
@@ -104,12 +106,15 @@ function HomePage() {
             </p>
 
             <div className="flex gap-3 justify-center lg:justify-start">
-              <button className="px-5 py-2 rounded-full bg-pink-500 text-white font-semibold text-sm">
-                Shop Women
-              </button>
-              <button className="px-5 py-2 rounded-full border border-blue-500 text-blue-600 font-semibold text-sm">
+              <Link to={'/women'}>
+                <button className="relative overflow-hidden px-6 py-2 border border-pink-500 text-pink-500 font-medium rounded-full group cursor-pointer">
+                  <span className="relative z-10 transition-colors duration-300 group-hover:text-white"> Shop Women </span>
+                  <span className="absolute inset-0 bg-pink-600 scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100">
+                  </span> </button>
+              </Link>
+              <Link to={'/men'}><button className="px-5 py-2 rounded-full border border-blue-500 cursor-pointer text-blue-600 font-semibold text-sm hover:scale-105 smooth">
                 Shop Men
-              </button>
+              </button></Link>
             </div>
           </div>
 
@@ -357,7 +362,7 @@ export function NewArrivalSection() {
 
   return (
     <section className="w-full px-4 py-8">
-      <h2 className="text-xl font-bold text-center mb-6">
+      <h2 className="text-3xl font-bold text-center mb-6">
         New <span className="text-pink-600">Arrivals</span>
       </h2>
 
@@ -421,16 +426,16 @@ export function NewArrivalSection() {
 export function FeaturedCollection() {
   const featuredItems = [
     {
-      imgsrc: "https://images.unsplash.com/photo-1520975922284-9c1f5d21c4f8?w=800",
+      imgsrc: "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg",
       title: "DROPPING SOON",
       tall: true
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
+      imgsrc: "https://image.hm.com/assets/hm/77/5a/775afd7e121de98e26c7bc2890cf4109efa36213.jpg",
       title: "SHIRTS"
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?w=800",
+      imgsrc: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/03/3d/45/70/friendly-shop.jpg",
       title: "SHOES"
     },
     {
@@ -447,7 +452,7 @@ export function FeaturedCollection() {
       title: "T-SHIRTS"
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+      imgsrc: "https://t4.ftcdn.net/jpg/02/49/08/19/360_F_249081945_tv8Huuf4mhjvHPg9ylS2zl6R2N5ISYUB.jpg",
       title: "ACCESSORIES"
     },
     {
@@ -455,7 +460,7 @@ export function FeaturedCollection() {
       title: "HOODIES"
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1528701800489-20be8b7f0f19?w=800",
+      imgsrc: "https://img.thecdn.in/340015/dkexu_512-1711613453366.webp?width=600&format=webp",
       title: "SNEAKERS"
     },
     {
@@ -464,12 +469,16 @@ export function FeaturedCollection() {
       tall: true
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800",
+      imgsrc: "https://www.thestatesman.com/wp-content/uploads/2017/08/1487751524-collection-of-bags-getty-517.jpg",
       title: "BAGS"
     },
     {
-      imgsrc: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+      imgsrc: "https://m.media-amazon.com/images/I/41NDmkI6vBL._AC_SY350_.jpg",
       title: "SUNGLASSES"
+    },
+    {
+      imgsrc: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+      title: "CAMERA"
     }
   ];
 

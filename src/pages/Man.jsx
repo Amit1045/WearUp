@@ -2,124 +2,143 @@ import React from 'react'
 import Footer from './Footer';
 
 
-const fandoms = [
+const MenCategories = [
   {
     id: 1,
-    title: "NASA",
-    img: "https://i.pinimg.com/736x/96/1d/e6/961de6db7dbcef191e5959c92a8d7470.jpg",
+    title: "Men T-Shirts",
+    img: "https://images.unsplash.com/photo-1520975439795-1c92e8a4f6e3?w=800",
   },
   {
     id: 2,
-    title: "HARRY POTTER",
-    img: "https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/2024/DECEMBER/31/MBFCKxOU_641d15833de54b2d9d643968d963bc8b.jpg",
+    title: "Casual Shirts",
+    img: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800",
   },
   {
     id: 3,
-    title: "SUPERMAN",
-    img: "https://images-static.nykaa.com/media/catalog/product/tr:h-800,w-800,cm-pad_resize/7/8/784e0e4685192_1.jpg",
+    title: "Denim Jeans",
+    img: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800",
   },
   {
     id: 4,
-    title: "MARVEL",
-    img: "https://pictures.kartmax.in/cover/live/600x800/quality=6/sites/aPfvUDpPwMn1ZadNKhP7/product-images/HMSS000013_1.JPG",
+    title: "Men Hoodies",
+    img: "https://m.media-amazon.com/images/I/61fH5qTCFvL._AC_UY1100_.jpg",
   },
   {
     id: 5,
-    title: "DEMON SLAYER",
-    img: "https://rukminim2.flixcart.com/image/480/640/xif0q/t-shirt/x/t/g/-original-imahew835nzkzbsu.jpeg?q=90"
+    title: "Sneakers",
+    img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800",
   },
   {
     id: 6,
-    title: "DC",
-    img: "https://images.bewakoof.com/t1080/men-s-white-vengeance-typography-oversized-t-shirt-519142-1745907892-1.jpg"
+    title: "Formal Wear",
+    img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800",
   },
-
+  {
+    id: 7,
+    title: "Men Jackets",
+    img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800",
+  },
+  {
+    id: 8,
+    title: "Men Footwear",
+    img: "https://image.made-in-china.com/2f0j00oILbzAJaMwkB/Men-Sandals-Beach-Slippers-Outdoor-Shoes.webp",
+  },
+  {
+    id: 9,
+    title: "Watches",
+    img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+  },
+  {
+    id: 10,
+    title: "Men Accessories",
+    img: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800",
+  },
 ];
 
-const WomenClothesCategory = [
-  {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
-      Discount: "40-60% off",
-  },
-  {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Casual Wears",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-      ClothType: "Men T-Shirt",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-      ClothType: "Winter Hoodie",
-      Discount: "40-60% off"
-  },
-  {
-      imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-      ClothType: "Denim Jeans",
-      Discount: "40-60% off"
-  },
 
-
+const ClothesCategory = [
+  {
+    imgsrc: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSZym7wvTFHlk5JhNRFUZo4-0SKWgUzVXWhqnj1YR9B0IBTDp71nXG99wFR6sP05osdMM2jVFz_fAYokw8LKOF0mUlIu6i8vPEywqPgOMRuP6WuMryZA1__VA",
+    ClothType: "Casual T-Shirts",
+    Discount: "30-50% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800",
+    ClothType: "Men Shirts",
+    Discount: "40-60% OFF",
+  },
+  {
+    imgsrc: "https://image.hm.com/assets/hm/d7/d4/d7d444a4cea1215c458060decf988f45d601ce74.jpg",
+    ClothType: "Hoodies & Sweatshirts",
+    Discount: "35-55% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800",
+    ClothType: "Denim Jeans",
+    Discount: "30-50% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800",
+    ClothType: "Men Jackets",
+    Discount: "45-65% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800",
+    ClothType: "Sneakers",
+    Discount: "50-70% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800",
+    ClothType: "Formal Wear",
+    Discount: "35-55% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
+    ClothType: "Casual Jackets",
+    Discount: "40-60% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+    ClothType: "Watches",
+    Discount: "25-45% OFF",
+  },
+  {
+    imgsrc: "https://images.stockcake.com/public/4/5/2/4526c574-68a5-4239-8e31-33eafb69255f_large/elegant-men-s-accessories-stockcake.jpg",
+    ClothType: "Men Accessories",
+    Discount: "50-70% OFF",
+  },
+  {
+    imgsrc: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+    ClothType: "Slim Fit Jeans",
+    Discount: "35-55% OFF",
+  },
+  {
+    imgsrc: "https://orleansshoes.com/cdn/shop/collections/Birkenstocks_67ff50df-fe7d-4b42-b265-7b1b933354d2.jpg",
+    ClothType: "Men Footwear",
+    Discount: "45-65% OFF",
+  },
 ];
 
 const collections = [
   {
-      img: "https://images.unsplash.com/photo-1542925581-8db3deffbebb?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=600",
+      img: "https://image.hm.com/assets/hm/4b/c3/4bc3bde925528b833337e501cdcc3ca18841b056.jpg?imwidth=2160",
       subtitle: "Oversized",
-      title: "SHIRTS",
+      title: "SWEATSHIRT ",
   },
   {
-      img: "https://images.unsplash.com/photo-1760998209708-5fc89d7983c0?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=600",
+      img: "https://nobero.com/cdn/shop/files/Neversayno_f70587e7-63b3-4337-bb94-022deabc7651.jpg",
       subtitle: "Edgy-Plus-Size",
       title: "T-SHIRTS",
   },
   {
-      img: "https://images.unsplash.com/photo-1674695662162-cc9cdf494e88",
+      img: "https://assets.ajio.com/medias/sys_master/root/20240913/XLC4/66e3be536f60443f3177cc78/-473Wx593H-700417694-grey-MODEL.jpg",
       subtitle: "COMFY",
       title: "HODDIES",
   },
 
 
 ];
+
 function Man() {
   return (
     <div>
@@ -131,7 +150,7 @@ function Man() {
       <section className="w-screen bg-center py-10 overflow-hidden">
         <div className="w-full bg-white relative py-6">
           <div className="flex w-max gap-6 marquee">
-            {[...fandoms, ...fandoms].map((item, index) => (
+            {[...MenCategories, ...MenCategories].map((item, index) => (
               <div
                 key={index}
                 className="relative w-[350px] h-[400px] rounded-2xl overflow-hidden shrink-0 cursor-pointer"
@@ -166,7 +185,7 @@ function Man() {
                 </h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {WomenClothesCategory.map((item, index) => (
+                    {ClothesCategory.map((item, index) => (
                         <div
                             key={index}
                             className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 cursor-pointer"

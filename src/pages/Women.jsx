@@ -2,103 +2,117 @@ import React from 'react'
 
 import Footer from './Footer';
 
-const fandoms = [
+const ItemsForWomen = [
     {
-        id: 1,
-        title: "NASA",
-        img: "https://i.pinimg.com/736x/96/1d/e6/961de6db7dbcef191e5959c92a8d7470.jpg",
+        title: "Closed Toe Footwear",
+        img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800",
+        price: "MIN. 75% OFF",
     },
     {
-        id: 2,
-        title: "HARRY POTTER",
-        img: "https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/2024/DECEMBER/31/MBFCKxOU_641d15833de54b2d9d643968d963bc8b.jpg",
+        title: "Boho-Fusion Dresses",
+        img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800",
+        price: "STARTING ₹399",
     },
     {
-        id: 3,
-        title: "SUPERMAN",
-        img: "https://images-static.nykaa.com/media/catalog/product/tr:h-800,w-800,cm-pad_resize/7/8/784e0e4685192_1.jpg",
+        title: "Handbags & Totes",
+        img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800",
+        price: "UP TO 60% OFF",
     },
     {
-        id: 4,
-        title: "MARVEL",
-        img: "https://pictures.kartmax.in/cover/live/600x800/quality=6/sites/aPfvUDpPwMn1ZadNKhP7/product-images/HMSS000013_1.JPG",
+        title: "Makeup Essentials",
+        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800",
+        price: "STARTING ₹299",
     },
     {
-        id: 5,
-        title: "DEMON SLAYER",
-        img: "https://rukminim2.flixcart.com/image/480/640/xif0q/t-shirt/x/t/g/-original-imahew835nzkzbsu.jpeg?q=90"
+        title: "Casual Kurtis",
+        img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800",
+        price: "MIN. 50% OFF",
     },
     {
-        id: 6,
-        title: "DC",
-        img: "https://images.bewakoof.com/t1080/men-s-white-vengeance-typography-oversized-t-shirt-519142-1745907892-1.jpg"
+        title: "Ethnic Wear Sets",
+        img: "https://images.unsplash.com/photo-1600180758895-9f38f6c3e65b?w=800",
+        price: "STARTING ₹699",
     },
-
+    {
+        title: "Statement Jewellery",
+        img: "https://images.unsplash.com/photo-1617038260897-41a1f14a9d14?w=800",
+        price: "UP TO 70% OFF",
+    },
+    {
+        title: "Women Heels",
+        img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800",
+        price: "STARTING ₹499",
+    },
+    {
+        title: "Sling & Crossbody Bags",
+        img: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800",
+        price: "MIN. 40% OFF",
+    },
 ];
+
 const WomenClothesCategory = [
     {
-        imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-        ClothType: "Casual Wears",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=800",
+      ClothType: "Casual Dresses",
+      Discount: "30-50% OFF",
     },
     {
-        imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-        ClothType: "Men T-Shirt",
-        Discount: "40-60% off",
+      imgsrc: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
+      ClothType: "Women Tops",
+      Discount: "40-60% OFF",
     },
     {
-        imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-        ClothType: "Winter Hoodie",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=800",
+      ClothType: "Kurtis & Tunics",
+      Discount: "35-55% OFF",
     },
     {
-        imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-        ClothType: "Denim Jeans",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800",
+      ClothType: "Women Footwear",
+      Discount: "50-70% OFF",
     },
     {
-        imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-        ClothType: "Casual Wears",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800",
+      ClothType: "Handbags",
+      Discount: "45-65% OFF",
     },
     {
-        imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-        ClothType: "Men T-Shirt",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800",
+      ClothType: "Ethnic Wear Sets",
+      Discount: "30-60% OFF",
     },
     {
-        imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-        ClothType: "Winter Hoodie",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800",
+      ClothType: "Makeup Essentials",
+      Discount: "20-40% OFF",
     },
     {
-        imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-        ClothType: "Denim Jeans",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=800",
+      ClothType: "Fashion Jewellery",
+      Discount: "55-75% OFF",
     },
     {
-        imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
-        ClothType: "Casual Wears",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1584917869842-1b1dcb9b5c96?w=800",
+      ClothType: "Sling & Crossbody Bags",
+      Discount: "40-60% OFF",
     },
     {
-        imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
-        ClothType: "Men T-Shirt",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+      ClothType: "Denim & Jeggings",
+      Discount: "35-55% OFF",
     },
     {
-        imgsrc: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTSQMUv5CuoP0181G3kIq-C4qjArVbfswBT6chOmZlnH4Bh5oFIAt3HbGkSrC9KWHL701MEDZPXo5KACEnH-7fAwzwLnyiPqIzA1-TR3ZI",
-        ClothType: "Winter Hoodie",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
+      ClothType: "Tank Tops",
+      Discount: "25-45% OFF",
     },
     {
-        imgsrc: "https://www.urbanofashion.com/cdn/shop/files/cfjeantowl-003-dblue.jpg?v=1764942493",
-        ClothType: "Denim Jeans",
-        Discount: "40-60% off"
+      imgsrc: "https://images.unsplash.com/photo-1585386959984-a41552231691?w=800",
+      ClothType: "Women Accessories",
+      Discount: "50-70% OFF",
     },
-
-
-];
+  ];
+  
 const collections = [
     {
         img: "https://images.unsplash.com/photo-1542925581-8db3deffbebb?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=600",
@@ -115,33 +129,61 @@ const collections = [
         subtitle: "COMFY",
         title: "HODDIES",
     },
-  
+
 
 ];
+
 function Women() {
     return (
         <div>
             <section className='relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden'>
                 <div className='w-full shadow-lg rounded mt-[-180px] bg-cover '>
                     <a href="/home">
-                        <img className='rounded w-full h-[800px] ' src="https://img.freepik.com/premium-psd/horizontal-banner-template-design-online-shopping-fashion-sale_797457-3.jpg?w=1480" />
+                        <img className='rounded w-full h-[620px]        /* mobile */
+          sm:h-[320px]     /* small tablets */
+          md:h-[420px]     /* tablets */
+          lg:h-[520px]     /* laptops */
+          xl:h-[650px]' src="https://img.freepik.com/premium-psd/horizontal-banner-template-design-online-shopping-fashion-sale_797457-3.jpg?w=1480" />
                     </a>
                 </div>
             </section>
             <section className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-center py-10">
                 <div className="w-full mt-[-180px] overflow-hidden bg-white relative py-6">
                     <div className="flex w-max gap-6 marquee">
-                        {[...fandoms, ...fandoms].map((item, index) => (
-                            <img
+                        {[...ItemsForWomen, ...ItemsForWomen].map((item, index) => (
+
+                            // CARD
+                            <div
                                 key={index}
-                                src={item.img}
-                                alt={item.title}
-                                className="w-[350px] h-[400px] object-cover rounded-xl shrink-0 cursor-pointer"
-                            />
+                                className="relative w-[350px] h-[400px] rounded-xl overflow-hidden shrink-0 cursor-pointer group"
+                            >
+                                {/* IMAGE */}
+                                <img
+                                    src={item.img}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+
+                                {/* BLACK OVERLAY TITLE */}
+                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/90 text-white px-5 py-3 rounded-xl text-center min-w-[80%]">
+                                    <h3 className="text-lg font-semibold tracking-wide">
+                                        {item.title}
+                                    </h3>
+
+                                    {/* OPTIONAL SUBTEXT */}
+                                    {item.price && (
+                                        <p className="text-sm opacity-90">
+                                            {item.price}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+
                         ))}
                     </div>
                 </div>
             </section>
+
             <section>
                 <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2025/OCTOBER/31/u7DPeZgp_4b3fe83d47eb4f3d97fa6a71941ef1c6.jpg" />
             </section>

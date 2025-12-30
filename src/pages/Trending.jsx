@@ -37,29 +37,46 @@ function Trending() {
     return (
         <div>
             <section className="overflow-hidden">
-                <h1 className="text-2xl md:text-3xl text-center font-bold mt-8 mb-8 font-sans">
-                    <span className="font-extrabold font-cursive">Trend Spill :</span>{" "}
-                    Straight From Fashion Week
-                </h1>
+  <h1 className="text-xl md:text-3xl text-center font-bold mt-8 mb-8 font-sans px-4">
+    <span className="font-extrabold font-cursive">Trend Spill :</span>{" "}
+    Straight From Fashion Week
+  </h1>
 
-                <div className="relative w-full overflow-hidden">
-                    <div className="marquee flex gap-6 w-max hover:[animation-play-state:paused]">
-                        {[...fandoms, ...fandoms].map((item, index) => (
-                            <div
-                                key={index}
-                                className="w-[600px] h-[600px] rounded-xl shrink-0 cursor-pointer overflow-hidden"
-                            >
-                                <img
-                                    src={item.img}
-                                    alt={item.title}
-                                    className="w-full h-full object-cover rounded-xl"
-                                />
-                                  <div className='relative w-80 p-4 bg-black text-white text-2xl rounded-2xl text-center -top-[20%] left-[25%]'> {item.title}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+  <div className="relative w-full overflow-hidden">
+    <div className="marquee flex gap-4 md:gap-6 w-max hover:[animation-play-state:paused]">
+      {[...fandoms, ...fandoms].map((item, index) => (
+        <div
+          key={index}
+          className="
+            w-[260px] h-[340px]
+            sm:w-[320px] sm:h-[420px]
+            md:w-[420px] md:h-[520px]
+            lg:w-[520px] lg:h-[600px]
+            rounded-xl shrink-0 cursor-pointer overflow-hidden relative
+          "
+        >
+          <img
+            src={item.img}
+            alt={item.title}
+            className="w-full h-full object-cover"
+          />
+
+          {/* TITLE OVERLAY */}
+          <div className="
+            absolute bottom-6 left-1/2 -translate-x-1/2
+            bg-black/80 text-white
+            text-sm sm:text-lg md:text-xl
+            px-6 py-3 rounded-xl
+            text-center whitespace-nowrap
+          ">
+            {item.title}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
                         <section className="m-10 py-12">
                             <HeroCarousel />
                         </section>
@@ -92,7 +109,7 @@ const slides = [
   },
 ];
 
-export  function HeroCarousel() {
+export function HeroCarousel() {
   const [active, setActive] = useState(0);
   const [pause, setPause] = useState(false);
 
@@ -101,21 +118,16 @@ export  function HeroCarousel() {
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % slides.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, [pause]);
 
-  const prevSlide = () => {
-    setActive((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
-    setActive((prev) => (prev + 1) % slides.length);
-  };
-
   return (
     <section
-      className="relative w-full h-[520px] overflow-hidden rounded-3xl "
+      className="
+        relative w-full
+        h-[260px] sm:h-[360px] md:h-[460px] lg:h-[520px]
+        overflow-hidden rounded-3xl
+      "
       onMouseEnter={() => setPause(true)}
       onMouseLeave={() => setPause(false)}
     >
@@ -130,14 +142,21 @@ export  function HeroCarousel() {
             className="min-w-full h-full bg-cover bg-center relative"
             style={{ backgroundImage: `url(${slide.img})` }}
           >
-            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
 
-            <div className="absolute left-10 top-1/2 -translate-y-1/2 text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-3">
+            {/* TEXT */}
+            <div className="
+              absolute left-4 md:left-10
+              top-1/2 -translate-y-1/2
+              text-white max-w-[90%] md:max-w-lg
+            ">
+              <h1 className="text-xl sm:text-3xl md:text-5xl font-bold mb-2">
                 {slide.title}
               </h1>
-              <p className="text-lg mb-5">{slide.desc}</p>
-              <button className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-black hover:text-white transition">
+              <p className="text-sm sm:text-lg mb-4">
+                {slide.desc}
+              </p>
+              <button className="bg-white text-black px-5 py-2 rounded-full font-semibold hover:bg-black hover:text-white transition">
                 Shop Now →
               </button>
             </div>
@@ -147,28 +166,34 @@ export  function HeroCarousel() {
 
       {/* ARROWS */}
       <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center"
+        onClick={() => setActive((active - 1 + slides.length) % slides.length)}
+        className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 w-8 h-8 md:w-10 md:h-10 rounded-full"
       >
         ‹
       </button>
 
       <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center"
+        onClick={() => setActive((active + 1) % slides.length)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 w-8 h-8 md:w-10 md:h-10 rounded-full"
       >
         ›
       </button>
 
       {/* THUMBNAILS */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3  px-4 py-2 rounded-2xl">
+      <div className="
+        absolute bottom-3 left-1/2 -translate-x-1/2
+        flex gap-2 md:gap-3
+        overflow-x-auto max-w-[90%]
+      ">
         {slides.map((slide, index) => (
           <img
             key={index}
             src={slide.img}
             onClick={() => setActive(index)}
-            className={`w-30 h-30 object-cover rounded-xl cursor-pointer border-5 border-gray-400 hover:scale-105  transition
-              ${active === index ? "border-gray-700 scale-105" : "border-grey-400"}
+            className={`
+              w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20
+              object-cover rounded-lg cursor-pointer border
+              ${active === index ? "border-black scale-105" : "border-gray-300"}
             `}
           />
         ))}
@@ -176,3 +201,4 @@ export  function HeroCarousel() {
     </section>
   );
 }
+
