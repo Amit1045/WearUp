@@ -2,7 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import Footer from './Footer';
+import { products } from '../../Data/products';
 import { Link } from "react-router-dom"
+const fandomProducts = products.filter(p => p.section === "fandom");
+const heroSlideSection=products.filter(p => p.section === "hero");
+const NewArrivalProduct=products.filter(p => p.section === "new");
+
 const ImageCarousel = ({ images }) => {
   const [index, setIndex] = useState(0);
 
@@ -158,37 +163,7 @@ function HomePage() {
   );
 }
 
-
 export default HomePage
-
-
-const slides = [
-  {
-    img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRDn3F27jmXAsgZj6exb_Ol-DPTz431kzEx8ocx5HF1QQc8-aEuYArP2I63BMOUIRyQSxBsVYHdVMETQj4KKFw-Zic82TRYJRl91jp52z2yqaoYdmfUekvt",
-    subtitle: "USE CODE: CARGOS100 • FLAT ₹100 OFF",
-    title: "THE CARGO CULTURE",
-  },
-  {
-    img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVTbz_VvyEQS7rwdclaNqKY3uJk6Gnm2i9RNjrrUNl_WxSY4YK-3MaOOws7NAdEFUjqByGm5SJgFXX20TfqtBPxERUOD-7wteQggG0Hhoa8JvORr6Z3I45jg",
-    subtitle: "DRIP-CODED SHIRTS",
-    title: "ALL TIME FAVOURITES",
-  },
-  {
-    img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ1n_8I009gDukOs_C2oOPalQd6C2XrIHw73n4KZjTMO8oymILleMWRqBDaZQXGFSIsrWiDNdIvletCeOjn0z15mVVkEs_9Xrsl_s8tJyV1fP_-6vc3QFlP",
-    subtitle: "DESIGNS OF THE WEEK",
-    title: "THE BOHO REVIVAL",
-  },
-  {
-    img: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVTbz_VvyEQS7rwdclaNqKY3uJk6Gnm2i9RNjrrUNl_WxSY4YK-3MaOOws7NAdEFUjqByGm5SJgFXX20TfqtBPxERUOD-7wteQggG0Hhoa8JvORr6Z3I45jg",
-    subtitle: "DRIP-CODED SHIRTS",
-    title: "ALL TIME FAVOURITES",
-  },
-  {
-    img: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ1n_8I009gDukOs_C2oOPalQd6C2XrIHw73n4KZjTMO8oymILleMWRqBDaZQXGFSIsrWiDNdIvletCeOjn0z15mVVkEs_9Xrsl_s8tJyV1fP_-6vc3QFlP",
-    subtitle: "DESIGNS OF THE WEEK",
-    title: "THE BOHO REVIVAL",
-  },
-];
 
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
@@ -205,7 +180,7 @@ export function HeroCarousel() {
     return () => window.removeEventListener("resize", updateSlides);
   }, []);
 
-  const maxIndex = slides.length - slidesPerView;
+  const maxIndex =2;
 
   // 🔥 AUTO SLIDE
   useEffect(() => {
@@ -232,25 +207,27 @@ export function HeroCarousel() {
           transform: `translateX(-${index * (100 / slidesPerView)}%)`,
         }}
       >
-        {slides.map((item, i) => (
-          <div key={i} className="w-full lg:w-1/3 shrink-0 px-4">
-            <div className="relative h-[280px] sm:h-[360px] lg:h-[460px] rounded-3xl overflow-hidden shadow-lg">
-              <img
-                src={item.img}
-                alt=""
-                className="w-full h-full object-cover"
-              />
-
-              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
-                <p className="text-white text-xs sm:text-sm">
-                  {item.subtitle}
-                </p>
-                <h2 className="text-white font-extrabold text-xl sm:text-2xl lg:text-4xl">
-                  {item.title}
-                </h2>
-              </div>
-            </div>
-          </div>
+        {heroSlideSection.map((item, i) => (
+         <Link to={`/product/${item.id}`} key={item.id}>
+         <div className="relative h-[600px] w-[600px] sm:h-[360px] lg:h-[460px] gap-2 rounded-3xl overflow-hidden shadow-lg">
+           
+           <img
+             src={item.image}
+             alt={item.brand}
+             className="w-full h-full object-cover"
+           />
+     
+           <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
+             <p className="text-white text-xs sm:text-sm">
+               {item.subtitle}
+             </p>
+             <h2 className="text-white font-extrabold text-xl sm:text-2xl lg:text-4xl">
+               {item.brand}
+             </h2>
+           </div>
+     
+         </div>
+       </Link>
         ))}
       </div>
 
@@ -284,81 +261,6 @@ export function HeroCarousel() {
 }
 
 export function NewArrivalSection() {
-  const clothesDesign = [
-    {
-      imgsrc: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
-      ClothType: "Black Oversized Coat",
-      price: "1599",
-      color: ["#000000", "#8b4513", "#cccccc"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800",
-      ClothType: "Cream Bermuda Trase",
-      price: "899",
-      color: ["#f5deb3", "#d2b48c", "#a0522d"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1593032465171-8c84c42f79a8?w=800",
-      ClothType: "Red Sports Jacket",
-      price: "1299",
-      color: ["#c0392b", "#000000"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800",
-      ClothType: "Pastel Windbreaker",
-      price: "1499",
-      color: ["#e0b0ff", "#87ceeb", "#ffffff"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1520975922284-9c1f5d21c4f8?w=800",
-      ClothType: "Classic Blue Denim Jacket",
-      price: "1799",
-      color: ["#1f3c88", "#2f4f4f"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800",
-      ClothType: "White Casual Hoodie",
-      price: "1199",
-      color: ["#ffffff", "#dcdcdc"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
-      ClothType: "Olive Green Cargo Pants",
-      price: "1399",
-      color: ["#556b2f", "#6b8e23"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800",
-      ClothType: "Beige Summer Shirt",
-      price: "999",
-      color: ["#f5f5dc", "#deb887"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800",
-      ClothType: "Black Streetwear Sneakers",
-      price: "2499",
-      color: ["#000000", "#555555"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800",
-      ClothType: "Pink Oversized Sweatshirt",
-      price: "1299",
-      color: ["#ffc0cb", "#ffb6c1"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=800",
-      ClothType: "Grey Slim Fit Trousers",
-      price: "1499",
-      color: ["#808080", "#a9a9a9"]
-    },
-    {
-      imgsrc: "https://images.unsplash.com/photo-1542060748-10c28b62716c?w=800",
-      ClothType: "Navy Blue Bomber Jacket",
-      price: "1899",
-      color: ["#0b3c5d", "#1c4966"]
-    }
-  ];
-
 
   return (
     <section className="w-full px-4 py-8">
@@ -376,7 +278,8 @@ export function NewArrivalSection() {
           lg:grid-cols-4
         "
       >
-        {clothesDesign.map((item, i) => (
+        {NewArrivalProduct.map((item, i) => (
+          <Link to={`/product/${item.id}`} key={item.id}>
           <div
             key={i}
             className="bg-white rounded-2xl shadow-md overflow-hidden"
@@ -384,8 +287,8 @@ export function NewArrivalSection() {
             {/* IMAGE */}
             <div className="relative">
               <img
-                src={item.imgsrc}
-                alt={item.ClothType}
+                src={item.image}
+                alt={item.brand}
                 className="w-full h-[220px] object-cover"
               />
 
@@ -398,7 +301,7 @@ export function NewArrivalSection() {
             {/* DETAILS */}
             <div className="p-3 text-center">
               <h3 className="text-sm font-semibold leading-snug line-clamp-2">
-                {item.ClothType}
+                {item.brand}
               </h3>
 
               <p className="text-sm font-bold mt-1">
@@ -417,6 +320,7 @@ export function NewArrivalSection() {
               </div>
             </div>
           </div>
+        </Link>
         ))}
       </div>
     </section>
@@ -484,59 +388,64 @@ export function FeaturedCollection() {
 
   return (
     <section className="w-full px-4 py-10">
-      <h2 className="text-center text-sm font-bold tracking-widest mb-6">
-        FEATURED CATEGORIES
-      </h2>
-
-      {/* MASONRY GRID */}
-      <div
-        className="
-          grid
-          grid-cols-2
-          gap-4
-          md:grid-cols-3
-          lg:grid-cols-4
-        "
-      >
-        {featuredItems.map((item, i) => (
-          <div
-            key={i}
-            className={`relative rounded-xl overflow-hidden group
-              ${item.tall ? "row-span-2 h-[420px]" : "h-[200px]"}
-            `}
+    <h2 className="text-center text-sm font-bold tracking-widest mb-6">
+      FEATURED CATEGORIES
+    </h2>
+  
+    <div
+      className="
+        grid
+        grid-cols-2
+        gap-4
+        md:grid-cols-3
+        lg:grid-cols-4
+      "
+    >
+      {featuredItems.map((item, i) => (
+        <Link
+          key={i}
+          to="/selectProduct"
+          className={`
+            relative
+            block
+            rounded-xl
+            overflow-hidden
+            group
+            ${item.tall ? "row-span-2 h-[420px]" : "h-[200px]"}
+          `}
+        >
+          <img
+            src={item.imgsrc}
+            alt={item.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+  
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition" />
+  
+          {/* Text */}
+          <span
+            className="
+              absolute
+              bottom-3
+              left-1/2
+              -translate-x-1/2
+              bg-white
+              text-black
+              text-xs
+              font-bold
+              px-3
+              py-1
+              rounded-full
+              shadow
+            "
           >
-            <img
-              src={item.imgsrc}
-              alt={item.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition" />
-
-            {/* Text */}
-            <span
-              className="
-                absolute
-                bottom-3
-                left-1/2
-                -translate-x-1/2
-                bg-white
-                text-black
-                text-xs
-                font-bold
-                px-3
-                py-1
-                rounded-full
-                shadow
-              "
-            >
-              {item.title}
-            </span>
-          </div>
-        ))}
-      </div>
-    </section>
+            {item.title}
+          </span>
+        </Link>
+      ))}
+    </div>
+  </section>
   );
 }
 
@@ -724,40 +633,6 @@ export function HoverImageMenu() {
   );
 }
 
-const fandoms = [
-  {
-    id: 1,
-    title: "NASA",
-    img: "https://i.pinimg.com/736x/96/1d/e6/961de6db7dbcef191e5959c92a8d7470.jpg",
-  },
-  {
-    id: 2,
-    title: "HARRY POTTER",
-    img: "https://assets.myntassets.com/h_1440,q_75,w_1080/v1/assets/images/2024/DECEMBER/31/MBFCKxOU_641d15833de54b2d9d643968d963bc8b.jpg",
-  },
-  {
-    id: 3,
-    title: "SUPERMAN",
-    img: "https://images-static.nykaa.com/media/catalog/product/tr:h-800,w-800,cm-pad_resize/7/8/784e0e4685192_1.jpg",
-  },
-  {
-    id: 4,
-    title: "MARVEL",
-    img: "https://pictures.kartmax.in/cover/live/600x800/quality=6/sites/aPfvUDpPwMn1ZadNKhP7/product-images/HMSS000013_1.JPG",
-  },
-  {
-    id: 5,
-    title: "DEMON SLAYER",
-    img: "https://rukminim2.flixcart.com/image/480/640/xif0q/t-shirt/x/t/g/-original-imahew835nzkzbsu.jpeg?q=90"
-  },
-  {
-    id: 6,
-    title: "DC",
-    img: "https://images.bewakoof.com/t1080/men-s-white-vengeance-typography-oversized-t-shirt-519142-1745907892-1.jpg"
-  },
-
-];
-
 const ShopByFandom = () => {
   const sliderRef = useRef(null);
 
@@ -795,7 +670,8 @@ const ShopByFandom = () => {
             snap-x snap-mandatory
           "
         >
-          {fandoms.map((item) => (
+          {fandomProducts .map((item) => (
+             <Link to={`/product/${item.id}`} key={item.id}>
             <div
               key={item.id}
               className="
@@ -809,7 +685,7 @@ const ShopByFandom = () => {
                 overflow-hidden rounded-2xl
               ">
                 <img
-                  src={item.img}
+                  src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover hover:scale-105 transition duration-500"
                 />
@@ -819,6 +695,7 @@ const ShopByFandom = () => {
                 {item.title}
               </h2>
             </div>
+            </Link>
           ))}
         </div>
 

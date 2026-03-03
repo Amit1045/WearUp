@@ -5,8 +5,10 @@ import Footer from "./Footer";
 
 export default function PurchasePage() {
   const { id } = useParams();
+const numericId = Number(id);
 
-  const product = products.find((p) => p.id === Number(id));
+const product =
+  products.find((p) => p.id === numericId) 
 
   if (!product) {
     return <div className="p-10 text-center">Product Not Found</div>;
@@ -19,7 +21,7 @@ export default function PurchasePage() {
         {/* IMAGE */}
         <div className="flex justify-center">
           <img
-            src={product.image}
+            src={product.image} 
             alt={product.title}
             className="rounded-2xl max-h-[600px] object-cover"
           />
