@@ -330,11 +330,11 @@ export const products = [
   category: "Collection",
   gender: "Unisex",
   section: "hero",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
-  color: "",
-  size: [],
+  price: 2350,
+  originalPrice: 1230,
+  discount: "40-60% off",
+  color: "green",
+  size: ["M", "L", "XL"],
   image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRDn3F27jmXAsgZj6exb_Ol-DPTz431kzEx8ocx5HF1QQc8-aEuYArP2I63BMOUIRyQSxBsVYHdVMETQj4KKFw-Zic82TRYJRl91jp52z2yqaoYdmfUekvt",
   subtitle: "USE CODE: CARGOS100 • FLAT ₹100 OFF"
 },
@@ -345,11 +345,11 @@ export const products = [
   category: "Collection",
   gender: "Unisex",
   section: "hero",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
-  color: "",
-  size: [],
+ price: 999,
+ originalPrice: 1399,
+ discount: 28,
+ color: "Black",
+ size: ["M", "L", "XL"],
   image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVTbz_VvyEQS7rwdclaNqKY3uJk6Gnm2i9RNjrrUNl_WxSY4YK-3MaOOws7NAdEFUjqByGm5SJgFXX20TfqtBPxERUOD-7wteQggG0Hhoa8JvORr6Z3I45jg",
   subtitle: "DRIP-CODED SHIRTS"
 },
@@ -360,11 +360,11 @@ export const products = [
   category: "Collection",
   gender: "Unisex",
   section: "hero",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
-  color: "",
-  size: [],
+  price: 999,
+  originalPrice: 1399,
+  discount: 28,
+  color: "Black",
+  size: ["M", "L", "XL"],
   image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ1n_8I009gDukOs_C2oOPalQd6C2XrIHw73n4KZjTMO8oymILleMWRqBDaZQXGFSIsrWiDNdIvletCeOjn0z15mVVkEs_9Xrsl_s8tJyV1fP_-6vc3QFlP",
   subtitle: "DESIGNS OF THE WEEK"
 },
@@ -374,11 +374,11 @@ export const products = [
   category: "Collection",
   gender: "Unisex",
   section: "hero",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
-  color: "",
-  size: [],
+  price: 999,
+  originalPrice: 1399,
+  discount: 28,
+  color: "Black",
+  size: ["M", "L", "XL"],
   image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRVTbz_VvyEQS7rwdclaNqKY3uJk6Gnm2i9RNjrrUNl_WxSY4YK-3MaOOws7NAdEFUjqByGm5SJgFXX20TfqtBPxERUOD-7wteQggG0Hhoa8JvORr6Z3I45jg",
   subtitle: "DRIP-CODED SHIRTS"
 },
@@ -603,8 +603,8 @@ export const products = [
   price: 299,
   originalPrice: 999,
   discount: 70,
-  color: [],
-  size: [],
+  color: ["red","blue"],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800"
 },
 
@@ -646,7 +646,7 @@ export const products = [
   originalPrice: 1599,
   discount: 70,
   color: ["Gold", "Silver"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1617038260897-41a1f14a9d14?w=800"
 },
 
@@ -674,7 +674,7 @@ export const products = [
   originalPrice: 1999,
   discount: 60,
   color: ["Brown", "Tan"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800"
 },
 // ---------------- WOMEN CATEGORY SECTION ----------------
@@ -695,8 +695,8 @@ export const products = [
 
 {
   id: 53,
-  brand: "Women Tops",
-  category: "Tops",
+  brand: "Nike shoe",
+  category: "shoe",
   gender: "Women",
   section: "women-category",
   price: 799,
@@ -745,14 +745,14 @@ export const products = [
   originalPrice: 1999,
   discount:" 60-65",
   color: ["Brown", "Tan"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800"
 },
 
 {
   id: 57,
-  brand: "Ethnic Wear Sets",
-  category: "Ethnic Wear",
+  brand: "Formals",
+  category: "Formals wears",
   gender: "Women",
   section: "women-category",
   price: 1499,
@@ -772,8 +772,8 @@ export const products = [
   price: 499,
   originalPrice: 999,
   discount: "20-40",
-  color: [],
-  size: [],
+  color: ["green","red"],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800"
 },
 
@@ -787,7 +787,7 @@ export const products = [
   originalPrice: 2799,
   discount: "60-75",
   color: ["Gold", "Silver"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=800"
 },
 
@@ -801,7 +801,7 @@ export const products = [
   originalPrice: 1999,
   discount: "40-60",
   color: ["Black", "Brown"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1584917869842-1b1dcb9b5c96?w=800"
 },
 
@@ -843,7 +843,7 @@ export const products = [
   originalPrice: 2499,
   discount: "40-70",
   color: ["Gold", " Silver"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1585386959984-a41552231691?w=800"
 },
 // ---------------- COLLECTION SECTION ----------------
@@ -854,12 +854,12 @@ export const products = [
   category: "Shirts",
   gender: "Unisex",
   section: "collection",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
   subtitle: "Oversized",
-  color: [],
-  size: [],
+  price: 999,
+  originalPrice: 1399,
+  discount: 28,
+  color: "Black",
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1542925581-8db3deffbebb?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=600"
 },
 
@@ -869,12 +869,12 @@ export const products = [
   category: "Tshirts",
   gender: "Unisex",
   section: "collection",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
   subtitle: "Edgy-Plus-Size",
-  color: [],
-  size: [],
+  price: 999,
+  originalPrice: 1399,
+  discount: 28,
+  color: "Black",
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1760998209708-5fc89d7983c0?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=600"
 },
 
@@ -884,12 +884,12 @@ export const products = [
   category: "Hoodies",
   gender: "Unisex",
   section: "collection",
-  price: 0,
-  originalPrice: 0,
-  discount: 0,
   subtitle: "COMFY",
-  color: [],
-  size: [],
+  price: 999,
+  originalPrice: 1399,
+  discount: 28,
+  color: "Black",
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1674695662162-cc9cdf494e88"
 },
 // ---------------- MEN CATEGORY SECTION ----------------
@@ -1030,7 +1030,7 @@ export const products = [
   originalPrice: 1499,
   discount: 53,
   color: ["Black", "Brown"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800"
 },
 // ---------------- MEN CLOTHING CATEGORY GRID ----------------
@@ -1157,7 +1157,7 @@ export const products = [
   originalPrice: 3999,
   discount: "25-45% OFF",
   color: ["Black", "Silver"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
 },
 
@@ -1171,7 +1171,7 @@ export const products = [
   originalPrice: 1999,
   discount: "50-70% OFF",
   color: ["Black", "Brown"],
-  size: [],
+  size: ["M", "L", "XL"],
   image: "https://images.stockcake.com/public/4/5/2/4526c574-68a5-4239-8e31-33eafb69255f_large/elegant-men-s-accessories-stockcake.jpg"
 },
 
@@ -1247,5 +1247,4 @@ export const products = [
   size: ["S", "M", "L", "XL"],
   image: "https://assets.ajio.com/medias/sys_master/root/20240913/XLC4/66e3be536f60443f3177cc78/-473Wx593H-700417694-grey-MODEL.jpg"
 }
-
 ];

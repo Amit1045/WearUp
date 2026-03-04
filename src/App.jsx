@@ -8,6 +8,8 @@ import Man from './pages/Man'
 import Trending from './pages/Trending'
 import Products from './pages/Products'
 import PurchasePage from './pages/PurchasePage'
+import Cart from './pages/Cart'
+import PaymentPage from './pages/PaymentPage'
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
         <Route path='/trending' element={<Trending />} />
         <Route path="/selectProduct" element={<Products />} />
         <Route path="/product/:id" element={<PurchasePage />} />
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/pay' element = {<PaymentPage />} />
       </Routes>
     </div>
   )

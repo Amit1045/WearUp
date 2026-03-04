@@ -27,7 +27,7 @@ function Women() {
                     <div className="flex w-max gap-6 marquee">
                         {[...ItemsForWomen, ...ItemsForWomen].map((item, index) => (
                             <Link to={`/product/${item.id}`} key={item.id}>
-                            // CARD
+                            
                                 <div
                                     key={index}
                                     className="relative w-[350px] h-[400px] rounded-xl overflow-hidden shrink-0 cursor-pointer group"
